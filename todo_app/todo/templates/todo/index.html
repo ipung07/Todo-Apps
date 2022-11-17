@@ -1,0 +1,19 @@
+{% extends "todo/base.html" %}
+{% block content %}
+
+<a class="btn btn-success" href="{% url 'todo:insert' %}" role="button">Add Todo</a>
+<div class="card bg-primary text-light mt-2" style="width: 18rem;">
+    <div class="card-header">
+      Todo List
+    </div>
+    <ul class="list-group list-group-flush">
+        {% for todo in todos %}
+            {% if todo.status == 'Y' %}
+            <a href="{% url 'todo:detail' todo.id %}" class="list-group-item list-group-item-action list-group-item-success">{{ todo.task }}</a>
+            {% else %}
+            <a href="{% url 'todo:detail' todo.id %}" class="list-group-item list-group-item-action list-group-item-warning">{{ todo.task }}</a>
+            {% endif %}
+        {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

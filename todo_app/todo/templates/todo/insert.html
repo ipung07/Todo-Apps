@@ -1,0 +1,31 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    <div class="card">
+        <h5 class="card-header">Insert Todo</h5>
+        <div class="card-body">
+            <h5 class="card-title">Todo</h5>
+            <div class="card-text">
+                <div class="mb-3">
+                    <label for="task" class="form-label">Task Name</label>
+                    {{ form.task }}
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    {{ form.description }}
+                </div>
+                <div class="input-group mb-3">
+                    {{ form.todo_image }}
+                    <label class="input-group-text">Images</label>
+                </div>
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    {{ form.status }}
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                {% csrf_token %}
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
